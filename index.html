@@ -18,60 +18,64 @@
         }
     </style>
     <h1 id = "display"> Sample text</h1>
-    <h2 id = "speedometer"></h2>
-    <button onclick = "play()"><h3 style = "font-size: 45px">Play</h3></button>
-    <button onclick = "reset()"><h3>Reset</h3></button>
-    <button onclick = "restart()" style = "background-color: red;"><h3>Restart. Careful, you might stack loops!</h3></button>
+    
+    <br>
+    <button onclick = "play()"><h3 style = "font-size: 30px">Play</h3></button>
+    <button onclick = "set()" style = "background-color: red"><h3 style = "font-size: 30px">Always press me before you press play!</h3></button>
+    <button onclick = "reset()"><h3 style = "font-size: 30px">Reset</h3></button>
+    <br>
+     <textarea cols="220" rows="15" id = "input"></textarea>
     <script>
         
-        var text = "At the sametime, if he wanted anything new, such as clothes, he did not feel comfortable asking his grandparents—they did not have much money. What all of this meant was that he was essentially alone in this world. He could not rely on anyone to give him anything. He would have to fend for himself. Then crack cocaine exploded on the streets in the mid-1980s and everything changed in neighborhoods like his. In the past, large gangs controlled the drug business, and to be involved you had to fit into their structure and spend years moving up the ladder. But crack was so easy to manufacture and the demand was so high, that anyone—no matter how young—could get in on the game without any startup capital. You could work on your own and make good money. For those like Curtis who grew up with little parental supervision and a disdain for authority, being a corner dealer was the perfect fit—no political games, no bosses above you. And so he quickly joined the growing pool of hustlers dealing crack on the streets of Southside Queens. As he got further into the game, he learned a fundamental lesson. There were endless problems and dangers confronting the street hustler— undercover cops, fiends, and rival dealers scheming to rob you. If you were weak, you looked for others to help you or for some crutch to lean on, such as drugs or alcohol. This was the path of doom. Eventually your friend would not show up as promised or your mind would be too clouded by drugs to see someone’s treachery. The only way to survive was to admit you were on your own, learn to make your own decisions, and trust your judgment. Do not ask for what you need but take it. Depend only on your wits. It was as if a hustler, born amid squalor and cramped quarters, possessed an empire. This was not something physical—the corner that he worked or the neighborhood he wanted to take over. It was his time, his energy, his creative schemes, his freedom to move where he wanted to. If he kept command of that empire, he would make money and thrive. If he looked for help, if he got caught up in other people’s political games, he gave all of that away. In such a case, the negative conditions of the hood would be magnified and he would end up a beggar, a pawn in someone else’s game. As he sat there bagging drugs that first day, Curtis realized that this went far beyond a momentary lull in his life in which he needed somequick money. This was a turning point. He looked at the other baggers. They all had suffered downturns in fortune—violence, prison time, etc. They had become scared and tired of the grind. They wanted the comfort and security of a paycheck. And this would become the pattern for the rest of their lives—afraid of life’s challenges, they would come to depend on other people to help them. Perhaps they could go on like this for several years, but the day of reckoning would come when there were no more jobs and they had forgotten how to fend for themselves. It was ludicrous for Curtis to imagine that the man now employing him to bag would some day help him set up shop. Bosses don’t do things like that, even if they’re your friends. They think of themselves and they use you. He had to get out now, before that empire slipped from his hands and he became yet another former hustler dependent on favors. He quickly went into full hustling mode and figured his way out of the trap. At the end of the first day, he made a deal with the baggers. He would dole out the daily cash he had been paid for the job to all of them. In return, he would teach them how to put less crack in each capsule but make it look full (he had been doing this on the street for years). They were then to give Curtis the extra crack that was left over from each capsule. Within a week, he had accumulated enough drugs to return to hustling on the streets, on his terms. After that, he swore to himself he’d never work for another person ever again. He would rather die.Years later, Curtis (now known as 50 Cent) had managed to segue into a music career, and after a fierce mix-tape campaign on the streets of New York in which he became a local celebrity, he gained the attention of Eminem, who helped sign him to a lucrative deal on his own label within Interscope Records. For the launch of his debut album, Get Rich or Die Tryin’, there was a lot of work to do—a marketing campaign, videos, artwork—and so he went to Los Angeles to work with Interscope on these projects. But the more time he spent in their cushy offices, the more he had the feeling that he was at yet another turning point in his life. The game these music executives were playing was simple: They owned your music and a lot more. They wanted to package the artist in their way, and this dictated all of the key decisions on the music videos and publicity. In return, they lavished you with money and perks. They created a feeling of dependence—without their massive machine behind you, you were helpless in the face of a viciously competitive business. In essence, you were exchanging money for freedom. And once you internally succumbed to their logic and their money, you were finished. You were a high-paid bagger doing a job. And so, as before, Fifty went into full hustling mode to reclaim his empire. In the short term, he schemed to shoot his own videos, with his own money, and come up with his own marketing schemes. To Interscope it seemed like he was saving them time and resources, but to Fifty it was a subtle way to regain control over his image. He set up a record label for his own stable of artists from within Interscope and he used this label to teach himself all aspects of production. He created his own website where he could experiment with new ways to market his music. He turned the dependence dynamic around, using Interscope as a school for teaching him how to run things on his own. All of this was part of the endgame he had in mind—he would run out his contract with Interscope, and instead of renegotiating a new one, he would proclaim his independence and be the first artist to set up his own freestanding record label. From such a position of power, he would have no more executives to please and he could expand his empire on his own terms. It would be just like the freedom he had experienced on the streets, but on a global scale."
-
-        
-        
-        
-        
-        
-        
-        
+        var text = ""
         var arrayOfText = [[]]
-        var index = 0
-        for (i = 0; i < text.length; i++){
-          if (text[i] == " ") {
-            arrayOfText.push([])
-            index += 1
-          }
-          else {
-          arrayOfText[index].push(text[i])
-          }
-        }
-
         var words = []
         
+        function set() {
+            text = document.getElementById("input").value
+            //document.write(text)
+            
+            var index = 0
+            for (i = 0; i < text.length; i++){
+            if (text[i] == " ") {
+            arrayOfText.push([])
+            index += 1
+            }
+          else {
+          arrayOfText[index].push(text[i])
+          } 
+        }
+            
         for (j = 0; j < arrayOfText.length; j++){
             words.push(arrayOfText[j].join(""))
         }
-        
+    }
+              
         var count = 0
         
         function reset(){
             count = 0
-        }
-        function restart(){
-            count = 0
-            play()
+            text = ""
+        document.getElementById("display").innerHTML = "Sample text"
+            arrayOfText = [[]]
+            words = []
         }
         
-        var playSpeed = 200
+        var playSpeed = 300
         function play() {
         var myTimer = setInterval(printWords,playSpeed)
             function printWords(){
+                
             if (count == words.length - 1){
-              clearInterval(myTimer)
+                //document.write("done")
+                clearInterval(myTimer)
             }
-            if (arrayOfText[count].includes(".") || arrayOfText[count].includes(",") || arrayOfText[count].includes("!") || arrayOfText[count].includes("—") || arrayOfText[count].includes("?") || arrayOfText[count].includes(";") || arrayOfText[count].includes(":")){
+                
+            if (arrayOfText[count].includes(".") || arrayOfText[count].includes(",") || arrayOfText[count].includes("!") || arrayOfText[count].includes("—") || arrayOfText[count].includes("?") || arrayOfText[count].includes(";") || arrayOfText[count].includes(":") ||
+            arrayOfText[count].includes("-")){
               display()
             }
-            document.getElementById("display").innerHTML = words[count]
+        document.getElementById("display").innerHTML = words[count]
             count += 1
             }
             
@@ -80,7 +84,7 @@
           clearInterval(myTimer)
           setTimeout(function(){
              play()
-          }, 620)
+          }, 720)
         }
       }
 
