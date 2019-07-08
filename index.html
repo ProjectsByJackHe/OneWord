@@ -3,82 +3,152 @@
 <head>
     <title>One word</title>
     </head>
-<body style = "background-color: black;">
-    <br><br><br><br><br><br><br><br>
-    <style>
-        h1{
-            font-size: 100px;
-            text-align: center;
-            font-family: sans-serif;
-            color: white;
-        }
-        h2 {
-            font-size: 45px;
-            color: white;
-        }
-    </style>
+        <body style = "background-color: black;">
+            <br><br><br><br><br><br><br><br>
+                <style>
+                    h1{
+                        font-size: 100px;
+                        text-align: center;
+                        font-family: sans-serif;
+                        color: white;
+                    }
+                    h2 {
+                        font-size: 45px;
+                        color: white;
+                    }
+                </style>
     <h1 id = "display"> Sample text</h1>
+    <br>
     
-    <br>
-    <button onclick = "play()"><h3 style = "font-size: 30px">Play</h3></button>
-    <button onclick = "set()" style = "background-color: red"><h3 style = "font-size: 30px">Always press me before you press play!</h3></button>
+    <p style = "color: red; font-size: 20px">*Warning: DO NOT save text for chinese and english at the same time. Always press reset or refresh the page if you wish to display a new language. </p>    
+    
+     <button onclick = "setChina()" style = "background-color: aqua"><h3 style = "font-size: 30px">Save text for Chinese settings ~中文</h3></button>
+    
+     <button onclick = "set()" style = "background-color: red"><h3 style = "font-size: 30px">Save text for English settings</h3></button>        
+            
+    <!--
+    Added features below:
+    -->
+    <button onclick = "play()"><h3 style = "font-size: 30px">Initiate</h3></button>        
+            
+    <button onclick = "pause()"><h3 style = "font-size: 30px" id = "pauseDisplay">Pause</h3></button>
+            
+    <button onclick = "prev()" style = "background-color: greenyellow"><h3 style = "font-size: 30px">
+        ⇦ </h3></button>
+    
+    <button onclick = "next()" style = "background-color: greenyellow"><h3 style = "font-size: 30px">
+        ⇨ </h3></button>
+     
     <button onclick = "reset()"><h3 style = "font-size: 30px">Reset</h3></button>
+            
     <br>
+            
      <textarea cols="220" rows="15" id = "input"></textarea>
+    
     <script>
-        
         var text = ""
         var arrayOfText = [[]]
         var words = []
+        var isEnglish = true
         
-        function set() {
-            text = document.getElementById("input").value
-            //document.write(text)
+        function set() { 
+            isEnglish = true
+                text = document.getElementById("input").value
+                    //document.write(text)
             
             var index = 0
             for (i = 0; i < text.length; i++){
-            if (text[i] == " ") {
-            arrayOfText.push([])
-            index += 1
+                if (text[i] == " ") {
+                    arrayOfText.push([])
+                    index += 1
+                }
+                else {
+                    arrayOfText[index].push(text[i])
+                } 
             }
-          else {
-          arrayOfText[index].push(text[i])
-          } 
-        }
             
-        for (j = 0; j < arrayOfText.length; j++){
-            words.push(arrayOfText[j].join(""))
+            for (j = 0; j < arrayOfText.length; j++){
+                words.push(arrayOfText[j].join(""))
+            }
+        }
+    
+    function setChina(){
+        isEnglish = false
+        text = document.getElementById("input").value
+        for (i = 0; i < text.length; i++){
+            if (text[i] != " "){
+                words.push(text[i])
+            }
         }
     }
-              
-        var count = 0
-        
-        function reset(){
+    var isExecuting = true    
+    function reset(){
+        if (!isExecuting){
             count = 0
             text = ""
-        document.getElementById("display").innerHTML = "Sample text"
+            document.getElementById("display").innerHTML = "Sample text"
             arrayOfText = [[]]
             words = []
+            isExecuting = true
         }
+    }
         
-        var playSpeed = 300
-        function play() {
-        var myTimer = setInterval(printWords,playSpeed)
-            function printWords(){
-                
+    var count = 0
+    var playSpeed = 300
+    var isPaused = true //new feature
+    var pauseCount = 1 //new feature for pausing
+    
+    function pause() { //new function for pausing
+        pauseCount += 1
+            if (pauseCount%2 == 0){
+                document.getElementById("pauseDisplay").innerHTML = "Play"
+                isPaused = false
+            }
+            else {
+                document.getElementById("pauseDisplay").innerHTML = "Pause"
+                isPaused = true
+            }
+    }
+        
+    function next(){ //function for right arrow
+        if (isPaused == false){
+            if (count < words.length - 1){
+                count += 1
+            }
+            document.getElementById("display").innerHTML = words[count]
+        }
+    }
+    
+    function prev(){ //function for left arrow
+        if (isPaused == false){
+           if (count > 0){
+            count -= 1
+           }
+            document.getElementById("display").innerHTML = words[count]
+        }
+    }
+    
+    function play() {
+        var myTimer = setInterval(printWords, playSpeed)
+        function printWords(){    
             if (count == words.length - 1){
-                //document.write("done")
+                //document.write("executed" + "\n")
+                isExecuting = false
                 clearInterval(myTimer)
             }
-                
-            if (arrayOfText[count].includes(".") || arrayOfText[count].includes(",") || arrayOfText[count].includes("!") || arrayOfText[count].includes("—") || arrayOfText[count].includes("?") || arrayOfText[count].includes(";") || arrayOfText[count].includes(":") ||
-            arrayOfText[count].includes("-")){
-              display()
+            if (isEnglish && isExecuting) {
+                if (arrayOfText[count].includes(".") || arrayOfText[count].includes(",") || arrayOfText[count].includes("!") || arrayOfText[count].includes("—") || arrayOfText[count].includes("?") || arrayOfText[count].includes(";") || arrayOfText[count].includes(":") ||
+                arrayOfText[count].includes("-")){
+                  display()
+                }
             }
-        document.getElementById("display").innerHTML = words[count]
-            count += 1
-            }
+            //diplay the javascript to html on line 128.
+            document.getElementById("display").innerHTML = words[count]
             
+            if (isPaused){
+                count += 1
+            }
+        }
             
         function display(){
           clearInterval(myTimer)
@@ -86,8 +156,8 @@
              play()
           }, 720)
         }
-      }
-
+        
+    }
     </script>
     </body>
 </html>
