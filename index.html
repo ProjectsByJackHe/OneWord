@@ -3,28 +3,40 @@
 <head>
     <title>One word</title>
     </head>
-        <body style = "background-color: black;">
+        <body>
             <br><br><br><br><br><br><br><br>
                 <style>
                     h1{
                         font-size: 100px;
                         text-align: center;
                         font-family: sans-serif;
-                        color: white;
                     }
                     h2 {
                         font-size: 45px;
-                        color: white;
+                        text-align: center;
+                        font-family: sans-serif;
+                    }
+                    #input {
+                        font-family: sans-serif;
+                        font-size: 25px;
+                    }
+                    #tutorial {
+                        font-size: 20px; font-family: sans-serif;
                     }
                 </style>
+    <h2 id = "progressTracker">0 / 0</h2>
     <h1 id = "display"> Sample text</h1>
     <br>
     
-    <p style = "color: red; font-size: 20px">*Warning: DO NOT save text for chinese and english at the same time. Always press reset or refresh the page if you wish to display a new language. </p>    
+    <p id = "tutorial"><strong>How to use this application:</strong><br> 1. Type in or copy and paste any text in the text box below. <br>
+    2. Click on 'Save text for English settings.' Then press 'Initiate.'<br> 
+    3. Sit back, relax, and enjoy not having to move your eyes or squint every time you read!
+            </p>
     
-     <button onclick = "setChina()" style = "background-color: aqua"><h3 style = "font-size: 30px">Save text for Chinese settings ~中文</h3></button>
     
-     <button onclick = "set()" style = "background-color: red"><h3 style = "font-size: 30px">Save text for English settings</h3></button>        
+     <button onclick = "setChina()"><h3 style = "font-size: 30px">Save text for Chinese settings ~中文</h3></button>
+    
+     <button onclick = "set()"><h3 style = "font-size: 30px">Save text for English settings</h3></button>        
             
     <!--
     Added features below:
@@ -33,24 +45,24 @@
             
     <button onclick = "pause()"><h3 style = "font-size: 30px" id = "pauseDisplay">Pause</h3></button>
             
-    <button onclick = "prev()" style = "background-color: greenyellow"><h3 style = "font-size: 30px">
+    <button onclick = "prev()"><h3 style = "font-size: 30px">
         ⇦ </h3></button>
     
-    <button onclick = "next()" style = "background-color: greenyellow"><h3 style = "font-size: 30px">
+    <button onclick = "next()"><h3 style = "font-size: 30px">
         ⇨ </h3></button>
      
     <button onclick = "reset()"><h3 style = "font-size: 30px">Reset</h3></button>
             
     <br>
             
-     <textarea cols="220" rows="15" id = "input"></textarea>
+     <textarea cols="104" rows="15" id = "input"></textarea>
     
     <script>
         var text = ""
         var arrayOfText = [[]]
         var words = []
         var isEnglish = true
-        
+        var progressTracker = document.getElementById("progressTracker")
         function set() { 
             isEnglish = true
                 text = document.getElementById("input").value
@@ -90,6 +102,7 @@
             arrayOfText = [[]]
             words = []
             isExecuting = true
+            progressTracker.innerHTML = "0 / 0"
         }
     }
         
@@ -144,6 +157,7 @@
             }
             //diplay the javascript to html on line 128.
             document.getElementById("display").innerHTML = words[count]
+            progressTracker.innerHTML = count + 1 + " / " + words.length
             
             if (isPaused){
                 count += 1
