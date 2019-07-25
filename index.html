@@ -113,12 +113,12 @@
     }
         
     var count = 0
-    var playSpeed = 300
+    var playSpeed = 170
     var isPaused = true //new feature
     var pauseCount = 1 //new feature for pausing
     
     function pause() { //new function for pausing
-        pauseCount += 1
+            pauseCount += 1
             if (pauseCount%2 == 0){
                 document.getElementById("pauseDisplay").innerHTML = "Play"
                 isPaused = false
@@ -147,6 +147,18 @@
         }
     }
     
+    document.onkeydown = function(event){
+        switch(event.keyCode){
+            case 37:
+                prev();
+                break;
+            case 39:
+                next();
+                break;
+        }
+    }    
+        
+        
     function play() {
         var myTimer = setInterval(printWords, playSpeed)
         function printWords(){    
