@@ -10,13 +10,28 @@ text-align: center;
 font-family: sans-serif;
 }
 
+/*laying out elements side-by-side*/
+/*laying out elements side-by-side*/
+
+/*User Input textfield*/
 #input {
+float: left;
 font-family: sans-serif;
 font-size: 25px;
+width: 90%;
+height: 80px;
+background-color: lightgray;
+text-align: center;
+resize: none;
 }
+/*User Input textfield*/
 
-#tutorial {
-font-size: 20px; font-family: sans-serif;
+#playButton{
+    float: right;
+    width: 8%;
+    height: 85px;
+    background-color: greenyellow;
+    font-size: 30px;
 }
 
 .idealStyle {
@@ -24,10 +39,44 @@ font-size: 20px; font-family: sans-serif;
     font-size: 20px;
 }
 
-#label{
-    float: left;
+slidecontainer {
+  width: 100%; /* Width of the outside container */
 }
 
-#changeSpeedSettings{
-    float: left;
+/* The slider styles */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  border-radius: 60px;
+  padding: 5px;
+
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
 }
