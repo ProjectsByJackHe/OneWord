@@ -43,6 +43,7 @@ var text = ""
     
     function reset(){
         if (!isExecuting){
+            willShowInitialSpeed = true
             count = 0
             text = ""
             document.getElementById("display").innerHTML = "Sample text"
@@ -58,10 +59,19 @@ var text = ""
     var playSpeed = 170
     var isPaused = true 
     var pauseCount = 1 
+    var didUpdateSpeed = false
+    var willShowInitialSpeed = true
     
     function changeSpeeds(){
-        playSpeed = 1000
-        document.getElementById("debugLabel").innerHTML = "Words per second: " + playSpeed
+        let newSpeed = document.getElementById("newSpeed").value
+        if (newSpeed != null) {
+            let y = (newSpeed/60000)*1000
+            let x = 1000/y
+            playSpeed = x
+            didUpdateSpeed = true
+            document.getElementById("debugLabel").innerHTML = "Current word speed: " +  document.getElementById("newSpeed").value +  " words per minute"
+            willShowInitialSpeed = false
+        }
     }
     
     function pause() { //new function for pausing
@@ -107,8 +117,11 @@ var text = ""
         
         
     function play() {
+       if (willShowInitialSpeed){
+        document.getElementById("debugLabel").innerHTML = "Current word speed: " +  "352" +  " words per minute"
+       }
         var myTimer = setInterval(printWords, playSpeed)
-        function printWords(){    
+        function printWords(){
             if (count == words.length - 1){
                 //document.write("executed" + "\n")
                 isExecuting = false
@@ -116,7 +129,8 @@ var text = ""
             }
             if (isEnglish && isExecuting) {
                 if (arrayOfText[count].includes(".") || arrayOfText[count].includes(",") || arrayOfText[count].includes("!") || arrayOfText[count].includes("—") || arrayOfText[count].includes("?") || arrayOfText[count].includes(";") || arrayOfText[count].includes(":") ||
-                arrayOfText[count].includes("-")){
+                arrayOfText[count].includes("-") || didUpdateSpeed){
+                  didUpdateSpeed = false
                   display()
                 }
             }
