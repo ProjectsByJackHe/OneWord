@@ -2,30 +2,18 @@
 <html>
 <head>
     <title>One word</title>
+     <link rel="stylesheet" type="text/css" href="style.css">
     </head>
         <body>
             <br><br><br><br><br><br><br><br>
-                <style>
-                    h1{
-                        font-size: 100px;
-                        text-align: center;
-                        font-family: sans-serif;
-                    }
-                    h2 {
-                        font-size: 45px;
-                        text-align: center;
-                        font-family: sans-serif;
-                    }
-                    #input {
-                        font-family: sans-serif;
-                        font-size: 25px;
-                    }
-                    #tutorial {
-                        font-size: 20px; font-family: sans-serif;
-                    }
-                </style>
     <h2 id = "progressTracker">0 / 0</h2>
+            
+            
+    <h2 id = "debugLabel">Your word speed:</h2>
+            
+            
     <h1 id = "display"> Sample text</h1>
+            
     <br>
     
     <p id = "tutorial"><strong>How to use this application:</strong><br> 1. Type in or copy and paste any text in the text box below. <br>
@@ -52,11 +40,14 @@
         ⇨ </h3></button>
      
     <button onclick = "reset()"><h3 style = "font-size: 30px">Reset</h3></button>
-            
+    
+    <button onclick = "changeSpeeds()"><h3 style = "font-size: 20px">change speeds</h3></button>
     <br>
             
      <textarea cols="104" rows="15" id = "input"></textarea>
-    
+            
+    <script type="text/javascript" src = "engine.js"></script>
+    <!--       
     <script>
         var text = ""
         var arrayOfText = [[]]
@@ -98,7 +89,9 @@
             }
         }
     }
-    var isExecuting = true    
+        
+    var isExecuting = true  
+    
     function reset(){
         if (!isExecuting){
             count = 0
@@ -111,11 +104,16 @@
             document.getElementById("input").value = ""
         }
     }
-        
-    var count = 0
+       
+    var count = 0 //index for the array of words.
     var playSpeed = 170
-    var isPaused = true //new feature
-    var pauseCount = 1 //new feature for pausing
+    var isPaused = true 
+    var pauseCount = 1 
+    
+    function changeSpeeds(){
+        playSpeed = 1000
+        document.getElementById("debugLabel").innerHTML = "Words per second: " + playSpeed
+    }
     
     function pause() { //new function for pausing
             pauseCount += 1
@@ -188,8 +186,8 @@
              play()
           }, 720)
         }
-        
     }
     </script>
+-->
     </body>
 </html>
