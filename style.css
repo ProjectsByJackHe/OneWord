@@ -4,8 +4,15 @@ h1{
     font-family: sans-serif;
 }
 
-h2 {
-font-size: 45px;
+#speedometer {
+    border: 1px solid;
+    border-radius: 30px;
+    padding: 5px;
+    width: 25%;
+}
+
+#speedLabel {
+font-size: 30px;
 text-align: center;
 font-family: sans-serif;
 }
@@ -20,7 +27,7 @@ float: left;
 font-family: sans-serif;
 font-size: 25px;
 width: 75%;
-height: 160px;
+height: 360px;
 background-color: lightgray;
 text-align: center;
 resize: none;
@@ -41,8 +48,8 @@ resize: none;
     width: 20%;
     height: 85px;
     background-color: greenyellow;
-    font-size: 20px;
     border-radius: 60px;
+    font-size: 30px;
 }
 
 slidecontainer {

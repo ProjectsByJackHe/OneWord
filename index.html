@@ -5,16 +5,20 @@
      <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-    <h1 id = "display"> Sample text</h1>
-            
-    <br>
+        
+    <!--Word speed count-->
+    <div id = "speedometer">
+        <h2 id = "speedLabel">Speed: 0 wpm</h2>
+    </div>
+    <!--Word speed count-->
     
-    <!--
-    <p class = "idealStyle"><strong>How to use this application:</strong><br> 1. Type in or copy and paste any text in the text box below. <br>
-    2. Click on 'Save text for English settings.' Then press 'Initiate.'<br> 
-    3. Sit back, relax, and enjoy not having to move your eyes or squint every time you read!
-            </p>
-    -->        
+    <!--Display-->
+    <br>
+    <h1 id = "display"> Sample text</h1>    
+    <br> 
+    <!--Display-->
+        
+        
     <!--Slider controller -->       
     <div class="slidecontainer">
     <input type="range" min="50" max="600" value="325" class="slider" id="myRange">
@@ -23,23 +27,19 @@
             
     <!--User Input -->    
             <textarea id = "input" placeholder = "Enter Text Here"></textarea>
+            <button style = "font-size: 35px;text-align: center;background-color: black;color: white;" id = "helper">?</button>
             <button id = "playButton" onclick = "play()">▶</button>
-            <button class = "idealStyleForButton" style = "font-size: 30px;" id = "auto"
-             onclick = "willEnableAutoPause()">
-                Enable Auto-Pause
-            </button> 
+            <button onclick = "playAgain()" class = "idealStyleForButton" style = "font-size: 50px;" id = "restart">⟲</button> 
+            <button class = "idealStyleForButton" id = "auto"
+             onclick = "willEnableAutoPause()">Enable Auto-Pause</button>
+            <button onclick = "clearAll()" class = "idealStyleForButton" style = "font-size: 50px;background-color: red;" id = "clear">⌫</button>
+            <button style="float: right; font-size: 15px;text-align: center;width: 20%; border-radius: 60px;">How does this web app work?</button>
     <!--User Input -->      
            
     <!--
     Added features below:
     -->
-    <br>
-    <br>
-        
-    <h2 id = "debugLabel" style="font-size: 40px">
-        Current word speed: 0 words per minute
-    </h2>
-         
+          
     <!-- link to logic -->      
     <script type="text/javascript" src = "slider.js"></script>
     <!-- link to logic -->         

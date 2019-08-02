@@ -2,10 +2,13 @@
 var userInput = document.getElementById("input")
 var display = document.getElementById("display")
 var speedInputRange = document.getElementById("myRange")
-var wordSpeedLabel = document.getElementById("debugLabel")
+var wordSpeedLabel = document.getElementById("speedLabel")
 var playButton = document.getElementById("playButton")
 var progressTracker = document.getElementById("progressTracker")
 var autoPause = document.getElementById("auto")
+var helpButton = document.getElementById("helper")
+var clearTextArea = document.getElementById("clear")
+var restart = document.getElementById("restart")
 
 //mathmatical calculation for words per minute:
     let currentValue = speedInputRange.value
@@ -13,15 +16,21 @@ var autoPause = document.getElementById("auto")
     let y = 1000/x
     var playSpeed = y
 
-
-//observes property changes and adjusts speed accordingly.
-
+//observes property changes and adjusts speed and size accordingly.
 function observeChangeSize(){
-    if (document.body.clientWidth < 845){
+    if (document.body.clientWidth < 900){
         autoPause.style.fontSize = "20px"
+        wordSpeedLabel.style.fontSize = "20px"
+        display.style.fontSize = "75px"
+        helpButton.style.fontSize = "13px"
+        helpButton.style.width = "5px"
     }
     else {
         autoPause.style.fontSize = "30px"
+        wordSpeedLabel.style.fontSize = "30px"
+        display.style.fontSize = "100px"
+        helpButton.style.fontSize = "35px"
+        helpButton.style.width = "auto"
     }
 }
 
@@ -41,6 +50,19 @@ userInput.oninput = function(){
     getWords()
 }
 
+function willEnableAutoPause(){
+    if (autoPause.innerHTML == "Enable Auto-Pause"){
+            autoPause.innerHTML = "Disable Auto-Pause"
+            autoPauseEnabled = true
+            autoPause.style.backgroundColor = "yellow"
+        }
+    else {
+        autoPause.innerHTML = "Enable Auto-Pause"
+        autoPauseEnabled = false
+        autoPause.style.backgroundColor = "greenyellow"
+    }
+}
+
 
 //Make the SetInterval happen to generate words to show:
 
@@ -49,7 +71,7 @@ function start(){
     var myTimer = setInterval(showText, playSpeed)
     var willAcceptSliderInput = true
     speedInputRange.oninput = function(){
-        wordSpeedLabel.innerHTML = willAcceptSliderInput
+        wordSpeedLabel.innerHTML = "Speed: " + this.value + " wpm"
         if (willAcceptSliderInput){
             let currentValue = this.value
             let x = (currentValue/60000)*1000
@@ -63,6 +85,8 @@ function start(){
         function showText(){
         if (willPlay && words.length > 0 && index < words.length){
                 display.innerHTML = words[index]
+              
+            wordSpeedLabel.innerHTML = "Speed: " + speedInputRange.value + " wpm" 
             
             let bool = (
             words[index].includes(",") || words[index].includes(".") ||
@@ -72,7 +96,7 @@ function start(){
                        )
             
             //do a setTimeOut if the current word includes period or comma:
-            if (bool){
+            if (bool && autoPauseEnabled){
                 clearInterval(myTimer)
                 willAcceptSliderInput = false
                 setTimeout(start, 1000) //initializer #2
@@ -87,11 +111,38 @@ start()
 var index = 0
 var willPlay = false
 
+//features and functionality--
+
+function playAgain(){
+    //styling--
+    restart.style.backgroundColor = "yellow"
+    setTimeout(function(){restart.style.backgroundColor = "greenyellow"}, 90)
+    //--code
+    index = 0
+    if (words.length > 0){
+        display.innerHTML = words[index]
+    }
+}
+
+function clearAll(){
+    //styling--
+    clearTextArea.style.backgroundColor = "yellow"
+    setTimeout(function(){clearTextArea.style.backgroundColor = "red"}, 90)
+    //--code
+    userInput.value = ""
+    willPlay = false
+    index = 0
+    words = []
+    display.innerHTML = "Sample text"
+}
+//--for restart and reset buttons.
+
+
 function play(){  
     if (playButton.innerHTML == "▶"){
         willPlay = true
         playButton.innerHTML = "❚❚"
-        playButton.style.backgroundColor = "red"
+        playButton.style.backgroundColor = "yellow"
     }
     else{
         willPlay = false
