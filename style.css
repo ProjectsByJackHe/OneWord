@@ -18,8 +18,8 @@ font-family: sans-serif;
 float: left;
 font-family: sans-serif;
 font-size: 25px;
-width: 90%;
-height: 80px;
+width: 75%;
+height: 160px;
 background-color: lightgray;
 text-align: center;
 resize: none;
@@ -28,10 +28,12 @@ resize: none;
 
 #playButton{
     float: right;
-    width: 8%;
+    width: 20%;
     height: 85px;
     background-color: greenyellow;
     font-size: 30px;
+    border-radius: 60px;
+
 }
 
 .idealStyle {

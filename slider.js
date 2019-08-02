@@ -9,7 +9,6 @@ var progressTracker = document.getElementById("progressTracker")
     let currentValue = speedInputRange.value
     let x = (currentValue/60000)*1000
     let y = 1000/x
-    display.innerHTML = y
     var playSpeed = y
 
     
@@ -22,7 +21,6 @@ var text = ""
 function getWords(){
     text = userInput.value
     words = text.split(" ")
-    wordSpeedLabel.innerHTML = words
 }
 
 userInput.oninput = function(){
@@ -31,16 +29,42 @@ userInput.oninput = function(){
 
 
 //Make the SetInterval happen to generate words to show:
+
+
 function start(){
     var myTimer = setInterval(showText, playSpeed)
+    var willAcceptSliderInput = true
     speedInputRange.oninput = function(){
-        let currentValue = this.value
-        let x = (currentValue/60000)*1000
-        let y = 1000/x
-        display.innerHTML = y
-        playSpeed = y
-        clearInterval(myTimer)
-        start()
+        wordSpeedLabel.innerHTML = willAcceptSliderInput
+        if (willAcceptSliderInput){
+            let currentValue = this.value
+            let x = (currentValue/60000)*1000
+            let y = 1000/x
+            playSpeed = y
+            clearInterval(myTimer)
+            start() //initializer #1
+        }
+    }
+    
+        function showText(){
+        if (willPlay && words.length > 0 && index < words.length){
+                display.innerHTML = words[index]
+            
+            let bool = (
+            words[index].includes(",") || words[index].includes(".") ||
+            words[index].includes("!") || words[index].includes("—") ||
+            words[index].includes("?") || words[index].includes(";") ||
+            words[index].includes(":")
+                       )
+            
+            //do a setTimeOut if the current word includes period or comma:
+            if (bool){
+                clearInterval(myTimer)
+                willAcceptSliderInput = false
+                setTimeout(start, 1000) //initializer #2
+            }
+            index += 1
+        }
     }
 }
 
@@ -59,10 +83,11 @@ function play(){
         playButton.innerHTML = "Play"
     }
 }
-
+/*
 function showText(){
-    if (willPlay){
+    if (willPlay && words.length > 0 && index < words.length){
+        display.innerHTML = words[index]
         index += 1
-        progressTracker.innerHTML = index
     }
 }
+*/
