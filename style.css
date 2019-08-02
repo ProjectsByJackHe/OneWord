@@ -10,8 +10,9 @@ text-align: center;
 font-family: sans-serif;
 }
 
-/*laying out elements side-by-side*/
-/*laying out elements side-by-side*/
+#progressTracker {
+    text-align: center;
+}
 
 /*User Input textfield*/
 #input {
@@ -31,14 +32,17 @@ resize: none;
     width: 20%;
     height: 85px;
     background-color: greenyellow;
-    font-size: 30px;
+    font-size: 60px;
     border-radius: 60px;
-
 }
 
-.idealStyle {
-    font-family: sans-serif;
+.idealStyleForButton {
+    float: right;
+    width: 20%;
+    height: 85px;
+    background-color: greenyellow;
     font-size: 20px;
+    border-radius: 60px;
 }
 
 slidecontainer {

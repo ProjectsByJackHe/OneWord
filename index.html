@@ -5,9 +5,6 @@
      <link rel="stylesheet" type="text/css" href="style.css">
     </head>
     <body>
-    <h2 id = "progressTracker">0 / 0</h2>
-    <h2 id = "debugLabel" style="font-size: 20px">Current word speed: 0 words per minute</h2>
-        
     <h1 id = "display"> Sample text</h1>
             
     <br>
@@ -26,30 +23,23 @@
             
     <!--User Input -->    
             <textarea id = "input" placeholder = "Enter Text Here"></textarea>
-            <button id = "playButton" style = "font-size: 20px;">Enable Auto-Pause</button>
-            <button id = "playButton" onclick = "play()">Play</button> 
-    <!--User Input -->  
-            
-     <button onclick = "setChina()"><h3 style = "font-size: 30px">Save text for Chinese settings ~中文</h3></button>
-    
-     <button onclick = "set()"><h3 style = "font-size: 30px">Save text for English settings</h3></button>        
-            
+            <button id = "playButton" onclick = "play()">▶</button>
+            <button class = "idealStyleForButton" style = "font-size: 30px;" id = "auto"
+             onclick = "willEnableAutoPause()">
+                Enable Auto-Pause
+            </button> 
+    <!--User Input -->      
+           
     <!--
     Added features below:
     -->
-    <button onclick = "play()"><h3 style = "font-size: 30px">Initiate</h3></button>        
-            
-    <button onclick = "pause()"><h3 style = "font-size: 30px" id = "pauseDisplay">Pause</h3></button>
-            
-    <button onclick = "prev()"><h3 style = "font-size: 30px">
-        ⇦ </h3></button>
-    
-    <button onclick = "next()"><h3 style = "font-size: 30px">
-        ⇨ </h3></button>
-    
-    <button onclick = "reset()"><h3 style = "font-size: 30px">Reset</h3></button>
-    
-            
+    <br>
+    <br>
+        
+    <h2 id = "debugLabel" style="font-size: 40px">
+        Current word speed: 0 words per minute
+    </h2>
+         
     <!-- link to logic -->      
     <script type="text/javascript" src = "slider.js"></script>
     <!-- link to logic -->         

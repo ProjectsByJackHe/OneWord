@@ -5,17 +5,31 @@ var speedInputRange = document.getElementById("myRange")
 var wordSpeedLabel = document.getElementById("debugLabel")
 var playButton = document.getElementById("playButton")
 var progressTracker = document.getElementById("progressTracker")
+var autoPause = document.getElementById("auto")
+
 //mathmatical calculation for words per minute:
     let currentValue = speedInputRange.value
     let x = (currentValue/60000)*1000
     let y = 1000/x
     var playSpeed = y
 
-    
+
 //observes property changes and adjusts speed accordingly.
-    
+
+function observeChangeSize(){
+    if (document.body.clientWidth < 845){
+        autoPause.style.fontSize = "20px"
+    }
+    else {
+        autoPause.style.fontSize = "30px"
+    }
+}
+
+setInterval(observeChangeSize, 200)
+
 var words = []
 var text = ""
+var autoPauseEnabled = false
 
 //Generate array of words based on user input
 function getWords(){
@@ -74,20 +88,14 @@ var index = 0
 var willPlay = false
 
 function play(){  
-    if (playButton.innerHTML == "Play"){
+    if (playButton.innerHTML == "▶"){
         willPlay = true
-        playButton.innerHTML = "Pause"
+        playButton.innerHTML = "❚❚"
+        playButton.style.backgroundColor = "red"
     }
     else{
         willPlay = false
-        playButton.innerHTML = "Play"
+        playButton.innerHTML = "▶"
+        playButton.style.backgroundColor = "greenyellow"
     }
 }
-/*
-function showText(){
-    if (willPlay && words.length > 0 && index < words.length){
-        display.innerHTML = words[index]
-        index += 1
-    }
-}
-*/
