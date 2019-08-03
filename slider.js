@@ -6,12 +6,12 @@ var wordSpeedLabel = document.getElementById("speedLabel")
 var playButton = document.getElementById("playButton")
 var autoPause = document.getElementById("auto")
 var helpButton = document.getElementById("helper")
+var secondHelpButton = document.getElementById("helper2")
 var clearTextArea = document.getElementById("clear")
 var restart = document.getElementById("restart")
 var controlPanel = document.getElementById("userInputContainer")
 var wordCount = document.getElementById("wordCount")
 var progressBar = document.getElementById("progressBar")
-
 
 //mathmatical calculation for words per minute:
     let currentValue = speedInputRange.value
@@ -166,7 +166,18 @@ switch(event.keyCode){
         next();
         break;
     case 32:
-        play();
+        playButton.disabled = true
+        restart.disabled = true
+        clearTextArea.disabled = true
+        helpButton.disabled = true
+        secondHelpButton.disabled = true
+        autoPause.disabled = true
+        
+        setTimeout(function(){playButton.disabled = false;
+        restart.disabled = false; clearTextArea.disabled = false;           helpButton.disabled = false;secondHelpButton.disabled = false
+        autoPause.disabled = false;                     
+        },1)
+        play()
         break;
     }
 }

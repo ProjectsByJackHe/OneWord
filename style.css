@@ -2,6 +2,16 @@ body{
     background-color: lightgray;
 }
 
+/*Removes unnecessary focusing when button is clicked or hovered on*/
+
+textarea:focus, input:focus{
+    outline: 0;
+}
+
+button:focus, input:focus{
+    outline: 0;
+}
+
 #mainDisplay{
   width: 100%;
   border: 1px solid;
