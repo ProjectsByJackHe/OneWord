@@ -13,6 +13,7 @@ var controlPanel = document.getElementById("userInputContainer")
 var wordCount = document.getElementById("wordCount")
 var progressBar = document.getElementById("progressBar")
 
+
 //mathmatical calculation for words per minute:
     let currentValue = speedInputRange.value
     let x = (currentValue/60000)*1000
@@ -166,18 +167,20 @@ switch(event.keyCode){
         next();
         break;
     case 32:
-        playButton.disabled = true
-        restart.disabled = true
-        clearTextArea.disabled = true
-        helpButton.disabled = true
-        secondHelpButton.disabled = true
-        autoPause.disabled = true
-        
-        setTimeout(function(){playButton.disabled = false;
-        restart.disabled = false; clearTextArea.disabled = false;           helpButton.disabled = false;secondHelpButton.disabled = false
-        autoPause.disabled = false;                     
-        },1)
-        play()
+        let isBoxSelected = document.activeElement.nodeName == 'TEXTAREA'
+            if (!isBoxSelected) {
+                playButton.disabled = true
+                restart.disabled = true
+                clearTextArea.disabled = true
+                helpButton.disabled = true
+                secondHelpButton.disabled = true
+                autoPause.disabled = true
+                setTimeout(function(){playButton.disabled = false;
+                restart.disabled = false; clearTextArea.disabled = false;           helpButton.disabled = false;secondHelpButton.disabled = false
+                autoPause.disabled = false;                     
+            },1)
+                play()
+            }
         break;
     }
 }

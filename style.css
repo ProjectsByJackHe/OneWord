@@ -4,8 +4,8 @@ body{
 
 /*Removes unnecessary focusing when button is clicked or hovered on*/
 
-textarea:focus, input:focus{
-    outline: 0;
+textarea:focus{
+    outline: 1;
 }
 
 button:focus, input:focus{
