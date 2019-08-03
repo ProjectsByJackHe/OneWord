@@ -4,11 +4,14 @@ var display = document.getElementById("display")
 var speedInputRange = document.getElementById("myRange")
 var wordSpeedLabel = document.getElementById("speedLabel")
 var playButton = document.getElementById("playButton")
-var progressTracker = document.getElementById("progressTracker")
 var autoPause = document.getElementById("auto")
 var helpButton = document.getElementById("helper")
 var clearTextArea = document.getElementById("clear")
 var restart = document.getElementById("restart")
+var controlPanel = document.getElementById("userInputContainer")
+var wordCount = document.getElementById("wordCount")
+var progressBar = document.getElementById("progressBar")
+
 
 //mathmatical calculation for words per minute:
     let currentValue = speedInputRange.value
@@ -18,19 +21,24 @@ var restart = document.getElementById("restart")
 
 //observes property changes and adjusts speed and size accordingly.
 function observeChangeSize(){
-    if (document.body.clientWidth < 900){
+   // display.innerHTML = document.body.clientWidth;
+    if (document.body.clientWidth < 1100){
+        controlPanel.style.height = "430px"
         autoPause.style.fontSize = "20px"
         wordSpeedLabel.style.fontSize = "20px"
         display.style.fontSize = "75px"
         helpButton.style.fontSize = "13px"
         helpButton.style.width = "5px"
+        wordCount.style.fontSize = "20px"
     }
     else {
+        controlPanel.style.height = "400px"
         autoPause.style.fontSize = "30px"
         wordSpeedLabel.style.fontSize = "30px"
         display.style.fontSize = "100px"
         helpButton.style.fontSize = "35px"
         helpButton.style.width = "auto"
+        wordCount.style.fontSize = "30px"
     }
 }
 
@@ -44,6 +52,8 @@ var autoPauseEnabled = false
 function getWords(){
     text = userInput.value
     words = text.split(" ")
+    wordCount.innerHTML = "Count: " + "0 / " + words.length
+    progressBar.max = String(words.length)
 }
 
 userInput.oninput = function(){
@@ -84,8 +94,11 @@ function start(){
     
         function showText(){
         if (willPlay && words.length > 0 && index < words.length){
-                display.innerHTML = words[index]
-              
+            
+            //update the view 
+            display.innerHTML = words[index]
+            wordCount.innerHTML = "Count: " + (index + 1) + " / " +words.length 
+            progressBar.value = String(index + 1)
             wordSpeedLabel.innerHTML = "Speed: " + speedInputRange.value + " wpm" 
             
             let bool = (
@@ -133,7 +146,9 @@ function clearAll(){
     willPlay = false
     index = 0
     words = []
-    display.innerHTML = "Sample text"
+    display.innerHTML = ""
+    wordCount.innerHTML = "Count: " + "0 / " + words.length
+    progressBar.value = "0"
 }
 //--for restart and reset buttons.
 

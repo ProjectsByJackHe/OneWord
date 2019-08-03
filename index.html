@@ -7,34 +7,50 @@
     <body>
         
     <!--Word speed count-->
-    <div id = "speedometer">
+    <div id = "cell">
         <h2 id = "speedLabel">Speed: 0 wpm</h2>
     </div>
     <!--Word speed count-->
-    
+        
+    <!--Word count-->
+    <div id = "cell">
+       <h2 id = "wordCount">Count: 0 / 0</h2>
+    </div>  
+    <!--Word count-->
+        
+    <!-- Progress Bar -->
+        <progress value="0" max = "100" id = "progressBar"></progress>
+    <!-- Progress Bar -->
+        
+    <br><br><br><br><br>
+        
+        
     <!--Display-->
     <br>
-    <h1 id = "display"> Sample text</h1>    
-    <br> 
+    <div id = "mainDisplay">
+        <h1 id = "display"></h1>    
+    </div>
     <!--Display-->
         
         
+  <div id = "userInputContainer">
     <!--Slider controller -->       
     <div class="slidecontainer">
     <input type="range" min="50" max="600" value="325" class="slider" id="myRange">
     </div>
     <!--Slider controller-->    
-            
-    <!--User Input -->    
-            <textarea id = "input" placeholder = "Enter Text Here"></textarea>
-            <button style = "font-size: 35px;text-align: center;background-color: black;color: white;" id = "helper">?</button>
+       
+    <!--User Input -->
+            <textarea id = "input" placeholder = "Copy + Paste Long Text Here To Speed-Read & Examine"></textarea>
+            <button style = "font-size: 35px;text-align: center;" id = "helper">?</button>
             <button id = "playButton" onclick = "play()">▶</button>
             <button onclick = "playAgain()" class = "idealStyleForButton" style = "font-size: 50px;" id = "restart">⟲</button> 
             <button class = "idealStyleForButton" id = "auto"
              onclick = "willEnableAutoPause()">Enable Auto-Pause</button>
             <button onclick = "clearAll()" class = "idealStyleForButton" style = "font-size: 50px;background-color: red;" id = "clear">⌫</button>
             <button style="float: right; font-size: 15px;text-align: center;width: 20%; border-radius: 60px;">How does this web app work?</button>
-    <!--User Input -->      
+    <!--User Input -->     
+        </div>
            
     <!--
     Added features below:

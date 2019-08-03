@@ -1,20 +1,52 @@
+body{
+    background-color: lightgray;
+}
+
+#mainDisplay{
+  width: 100%;
+  border: 1px solid;
+  height: 250px;
+  background-color: white;
+}
+
+progress[value]{
+    float: right;
+   -webkit-appearance: none;
+   appearance: none;
+    width: 43%;
+    height: 100px;
+}
+
+#userInputContainer{
+    background-color: black;
+    height: 400px;
+    width: 100%;
+}
+
 h1{
     font-size: 100px;
     text-align: center;
     font-family: sans-serif;
 }
 
-#speedometer {
-    border: 1px solid;
-    border-radius: 30px;
+#cell {
+    border: 3px solid;
+  /*  border-radius: 30px; */
     padding: 5px;
     width: 25%;
+    float: left;
 }
 
 #speedLabel {
 font-size: 30px;
 text-align: center;
 font-family: sans-serif;
+}
+
+#wordCount {
+font-size: 30px;
+text-align: center;
+font-family: sans-serif;   
 }
 
 #progressTracker {
@@ -72,6 +104,7 @@ slidecontainer {
 /* Mouse-over effects */
 .slider:hover {
   opacity: 1; /* Fully shown on mouse-over */
+  background-color: yellow;
 }
 
 /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
@@ -83,7 +116,7 @@ slidecontainer {
   border-radius: 60px;
   padding: 5px;
 
-  background: #4CAF50; /* Green background */
+  background-color: black; /* Green background */
   cursor: pointer; /* Cursor on hover */
 }
 
