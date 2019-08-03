@@ -134,8 +134,9 @@ function playAgain(){
     index = 0
     if (words.length > 0){
         display.innerHTML = words[index]
+        progressBar.value = String(index)
+        wordCount.innerHTML = "Count: " + index + " / " + words.length
     }
-    progressBar.value = String(index + 1)
 }
 
 function clearAll(){
@@ -153,6 +154,50 @@ function clearAll(){
 }
 //--for restart and reset buttons.
 
+//code to enable key-board controls:
+document.onkeydown = function(event){
+switch(event.keyCode){
+    case 37:
+        temporarilyDisableSliderControl()
+        prev();
+        break;
+    case 39:
+        temporarilyDisableSliderControl()
+        next();
+        break;
+    case 32:
+        play();
+        break;
+    }
+}
+
+function temporarilyDisableSliderControl(){
+    speedInputRange.disabled = true
+    setTimeout(function(){speedInputRange.disabled = false},1)
+}
+
+//Go to next word:
+function next(){
+    if (!willPlay && (index + 1) < words.length){
+        index += 1
+        wordCount.innerHTML = "Count: " + (index + 1) + " / " + words.length 
+        
+        progressBar.value = String(index + 1)
+        display.innerHTML = words[index]
+    }
+}
+
+//Go back to previous word:
+function prev(){
+    if (!willPlay && (index) > 0){
+        index -= 1
+        wordCount.innerHTML = "Count: " + (index + 1) + " / " + words.length 
+        
+        progressBar.value = String(index + 1)
+        display.innerHTML = words[index]
+    }
+}
+//code to enable key-board control
 
 function play(){  
     if (playButton.innerHTML == "▶"){
@@ -166,3 +211,25 @@ function play(){
         playButton.style.backgroundColor = "greenyellow"
     }
 }
+
+//code for the pop-up manual:
+  var modal = document.getElementById("myModal");
+  var span = document.getElementsByClassName("close")[0];
+  var isPopUpManualOpen = false
+  
+function openPopUp() {
+    modal.style.display = "block";
+    setTimeout(function(){isPopUpManualOpen = true}, 1)
+}
+        
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+document.onclick = function(){
+    if (isPopUpManualOpen){
+        modal.style.display = "none";
+        isPopUpManualOpen = false;
+    }
+}
+//code for the pop-up manual

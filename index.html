@@ -50,20 +50,32 @@
        
     <!--User Input -->
             <textarea id = "input" placeholder = "Copy + Paste Long Text Here To Speed-Read & Examine"></textarea>
-            <button style = "font-size: 35px;text-align: center;" id = "helper">?</button>
+            <button style = "font-size: 35px;text-align: center;" id = "helper" onclick = "openPopUp()">?</button>
             <button id = "playButton" onclick = "play()">▶</button>
             <button onclick = "playAgain()" class = "idealStyleForButton" style = "font-size: 50px;" id = "restart">⟲</button> 
             <button class = "idealStyleForButton" id = "auto"
              onclick = "willEnableAutoPause()">Enable Auto-Pause</button>
             <button onclick = "clearAll()" class = "idealStyleForButton" style = "font-size: 50px;background-color: red;" id = "clear">⌫</button>
-            <button style="float: right; font-size: 15px;text-align: center;width: 20%; border-radius: 60px;">How does this web app work?</button>
+            <button style="float: right; font-size: 15px;text-align: center;width: 20%; border-radius: 60px;" onclick = "openPopUp()">How does this web app work?</button>
     <!--User Input -->     
         </div>
            
     <!--
     Added features below:
     -->
-          
+    
+   <!--Manual about how to use this web app-->     
+    <div id = "myModal" class = "modal">
+        <!--The contents of the popup menu:-->
+        <div class = "modalContent">
+             <span class = "close">&times;</span> 
+            
+        <!-- Contents of the popup menu -->
+        </div>
+    </div>
+    <!--Manual about how to use this web app-->  
+        
+        
     <!-- link to logic -->      
     <script type="text/javascript" src = "slider.js"></script>
     <!-- link to logic -->         
