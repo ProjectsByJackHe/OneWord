@@ -135,6 +135,7 @@ function playAgain(){
     if (words.length > 0){
         display.innerHTML = words[index]
     }
+    progressBar.value = String(index + 1)
 }
 
 function clearAll(){
