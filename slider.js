@@ -14,6 +14,12 @@ var wordCount = document.getElementById("wordCount")
 var progressBar = document.getElementById("progressBar")
 
 
+// const colors = ["red", "green", "blue", "yellow", "purple"]
+// for (var i = 0; i < 5; i++){
+//     document.getElementById(i).innerHTML = i
+//     document.getElementById(i).style.backgroundColor = colors[i]
+// }
+
 //mathmatical calculation for words per minute:
     let currentValue = speedInputRange.value
     let x = (currentValue/60000)*1000
@@ -76,7 +82,7 @@ function willEnableAutoPause(){
 
 
 //Make the SetInterval happen to generate words to show:
-
+var START_INDEX = 0
 
 function start(){
     var myTimer = setInterval(showText, playSpeed)
@@ -102,6 +108,44 @@ function start(){
             progressBar.value = String(index + 1)
             wordSpeedLabel.innerHTML = "Speed: " + speedInputRange.value + " wpm" 
             
+            // const NUM_WORDS = 50
+            // var wordsOnScreen = ""
+            // if (index%NUM_WORDS == 0){
+            //     START_INDEX = index
+            //     paragraph.innerHTML = ""
+            // }
+            // for (var i = START_INDEX; i < index; i++){
+            //     if (i < words.length){
+            //         wordsOnScreen += words[i] + " "
+            //     }
+            // }
+            // paragraph.innerHTML = wordsOnScreen
+
+            const NUM_WORDS = 51
+            var x = 0
+            if (index % NUM_WORDS === 0){
+                START_INDEX = 0
+                for (var i = index; i < index + NUM_WORDS; i++){
+                    if (i < words.length){
+                        document.getElementById(x).innerHTML = words[i]
+                        document.getElementById(x).style.backgroundColor = "white"
+                        x++
+                    }
+                    else{
+                        document.getElementById(x).innerHTML = ""
+                        x++
+                    }
+                }
+            }
+            if (START_INDEX < NUM_WORDS){
+                document.getElementById(START_INDEX).style.backgroundColor = "yellow"
+                // uncomment in order to enable 1 word traversals:
+                // if (START_INDEX > 0) {
+                //     document.getElementById(START_INDEX - 1).style.backgroundColor = "white"
+                // }
+            }
+            START_INDEX++
+
             let bool = (
             words[index].includes(",") || words[index].includes(".") ||
             words[index].includes("!") || words[index].includes("—") ||
@@ -133,6 +177,7 @@ function playAgain(){
     setTimeout(function(){restart.style.backgroundColor = "greenyellow"}, 90)
     //--code
     index = 0
+    START_INDEX = 0
     if (words.length > 0){
         display.innerHTML = words[index]
         progressBar.value = String(index)
@@ -152,6 +197,12 @@ function clearAll(){
     display.innerHTML = ""
     wordCount.innerHTML = "Count: " + "0 / " + words.length
     progressBar.value = "0"
+    START_INDEX = 0
+    let spans = 51
+    for (var x = 0; x < spans; x++){
+        document.getElementById(x).innerHTML = ""
+        document.getElementById(x).style.backgroundColor = "white"
+    }
 }
 //--for restart and reset buttons.
 

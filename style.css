@@ -4,6 +4,10 @@ body{
 
 /*Removes unnecessary focusing when button is clicked or hovered on*/
 
+#paragraph{
+  height: 90px;
+}
+
 textarea:focus{
     outline: 1;
 }
@@ -28,7 +32,7 @@ progress[value]{
 }
 
 #userInputContainer{
-    background-color: black;
+    background-color: white;
     height: 400px;
     width: 100%;
 }
@@ -111,7 +115,7 @@ resize: none;
     font-size: 30px;
 }
 
-slidecontainer {
+#slidecontainer {
   width: 100%; /* Width of the outside container */
 }
 
