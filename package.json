@@ -1,0 +1,22 @@
+{
+  "name": "oneword",
+  "version": "1.0.0",
+  "description": "A lightweight application built to parse through and read long paragraphs so you don't have to!",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProjectsByJackHe/OneWord.git"
+  },
+  "keywords": [
+    "speed-reader"
+  ],
+  "author": "Jack He",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ProjectsByJackHe/OneWord/issues"
+  },
+  "homepage": "https://github.com/ProjectsByJackHe/OneWord#readme"
+}
