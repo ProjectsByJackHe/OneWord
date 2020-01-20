@@ -33,7 +33,7 @@ function observeChangeSize(){
         controlPanel.style.height = "430px"
         autoPause.style.fontSize = "20px"
         wordSpeedLabel.style.fontSize = "20px"
-        display.style.fontSize = "75px"
+        display.style.fontSize = "90px"
         helpButton.style.fontSize = "13px"
         helpButton.style.width = "5px"
         wordCount.style.fontSize = "20px"
@@ -42,14 +42,14 @@ function observeChangeSize(){
         controlPanel.style.height = "400px"
         autoPause.style.fontSize = "30px"
         wordSpeedLabel.style.fontSize = "30px"
-        display.style.fontSize = "100px"
+        display.style.fontSize = "150px"
         helpButton.style.fontSize = "35px"
         helpButton.style.width = "auto"
         wordCount.style.fontSize = "30px"
     }
 }
 
-setInterval(observeChangeSize, 200)
+observeChangeSize()
 
 var words = []
 var text = ""
@@ -140,9 +140,9 @@ function start(){
             if (START_INDEX < NUM_WORDS){
                 document.getElementById(START_INDEX).style.backgroundColor = "yellow"
                 // uncomment in order to enable 1 word traversals:
-                // if (START_INDEX > 0) {
-                //     document.getElementById(START_INDEX - 1).style.backgroundColor = "white"
-                // }
+                if (START_INDEX > 0) {
+                    document.getElementById(START_INDEX - 1).style.backgroundColor = "white"
+                }
             }
             START_INDEX++
 
@@ -182,6 +182,11 @@ function playAgain(){
         display.innerHTML = words[index]
         progressBar.value = String(index)
         wordCount.innerHTML = "Count: " + index + " / " + words.length
+    }
+    // 51 represents how many spans there are on the screen
+    for (var j = 0; j < 51; j++){
+        document.getElementById(j).innerHTML = ""
+        document.getElementById(j).style.backgroundColor = "white"
     }
 }
 
@@ -243,23 +248,38 @@ function temporarilyDisableSliderControl(){
 
 //Go to next word:
 function next(){
-    if (!willPlay && (index + 1) < words.length){
+    if (!willPlay && START_INDEX < 50 && index < words.length){ 
+        // incrment index by 1, render the display with new count, show next word in the words array. 
         index += 1
         wordCount.innerHTML = "Count: " + (index + 1) + " / " + words.length 
-        
         progressBar.value = String(index + 1)
         display.innerHTML = words[index]
+    }
+    if (START_INDEX < 50 && !willPlay && index <= words.length && words.length > 0){
+        // increment the LOCAL index by 1
+        START_INDEX++
+        document.getElementById(START_INDEX).style.backgroundColor = "aqua"
+        document.getElementById(START_INDEX - 1).style.backgroundColor = "white"
+        if (START_INDEX > 1){
+           document.getElementById(START_INDEX - 2).style.backgroundColor = "white"
+        }
     }
 }
 
 //Go back to previous word:
 function prev(){
-    if (!willPlay && (index) > 0){
+    if (!willPlay && START_INDEX > 0 && !willPlay && index > 0){
+        // Decrease the index by 1, render the display 
         index -= 1
         wordCount.innerHTML = "Count: " + (index + 1) + " / " + words.length 
-        
         progressBar.value = String(index + 1)
         display.innerHTML = words[index]
+    }
+    if (START_INDEX > 0 && !willPlay && index >= 0 && words.length > 0){
+        // decrease the LOCAL index by 1
+        START_INDEX--
+        document.getElementById(START_INDEX).style.backgroundColor = "aqua"
+        document.getElementById(START_INDEX + 1).style.backgroundColor = "white"
     }
 }
 //code to enable key-board control
