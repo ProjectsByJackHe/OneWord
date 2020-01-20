@@ -71,12 +71,12 @@ function willEnableAutoPause(){
     if (autoPause.innerHTML == "Enable Auto-Pause"){
             autoPause.innerHTML = "Disable Auto-Pause"
             autoPauseEnabled = true
-            autoPause.style.backgroundColor = "yellow"
+            autoPause.style.backgroundColor = "lightgrey"
         }
     else {
         autoPause.innerHTML = "Enable Auto-Pause"
         autoPauseEnabled = false
-        autoPause.style.backgroundColor = "greenyellow"
+        autoPause.style.backgroundColor = "white"
     }
 }
 
@@ -173,8 +173,8 @@ var willPlay = false
 
 function playAgain(){
     //styling--
-    restart.style.backgroundColor = "yellow"
-    setTimeout(function(){restart.style.backgroundColor = "greenyellow"}, 90)
+    restart.style.backgroundColor = "lightgrey"
+    setTimeout(function(){restart.style.backgroundColor = "white"}, 90)
     //--code
     index = 0
     START_INDEX = 0
@@ -192,8 +192,8 @@ function playAgain(){
 
 function clearAll(){
     //styling--
-    clearTextArea.style.backgroundColor = "yellow"
-    setTimeout(function(){clearTextArea.style.backgroundColor = "red"}, 90)
+    clearTextArea.style.backgroundColor = "lightgrey"
+    setTimeout(function(){clearTextArea.style.backgroundColor = "white"}, 90)
     //--code
     userInput.value = ""
     willPlay = false
@@ -288,12 +288,12 @@ function play(){
     if (playButton.innerHTML == "▶"){
         willPlay = true
         playButton.innerHTML = "❚❚"
-        playButton.style.backgroundColor = "yellow"
+        playButton.style.backgroundColor = "lightgrey"
     }
     else{
         willPlay = false
         playButton.innerHTML = "▶"
-        playButton.style.backgroundColor = "greenyellow"
+        playButton.style.backgroundColor = "white"
     }
 }
 
