@@ -222,7 +222,7 @@ switch(event.keyCode){
         temporarilyDisableSliderControl()
         next();
         break;
-    case 32:
+    case 88:
         let isBoxSelected = document.activeElement.nodeName == 'TEXTAREA'
             if (!isBoxSelected) {
                 playButton.disabled = true
