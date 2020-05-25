@@ -238,6 +238,38 @@ switch(event.keyCode){
                 play()
             }
         break;
+    case 83:
+        let isBoxSelected = document.activeElement.nodeName == 'TEXTAREA'
+            if (!isBoxSelected) {
+                playButton.disabled = true
+                restart.disabled = true
+                clearTextArea.disabled = true
+                helpButton.disabled = true
+                secondHelpButton.disabled = true
+                autoPause.disabled = true
+                setTimeout(function(){playButton.disabled = false;
+                restart.disabled = false; clearTextArea.disabled = false;           helpButton.disabled = false;secondHelpButton.disabled = false
+                autoPause.disabled = false;                     
+            },1)
+                play()
+            }
+        break;
+    case 68:
+        let isBoxSelected = document.activeElement.nodeName == 'TEXTAREA'
+            if (!isBoxSelected) {
+                playButton.disabled = true
+                restart.disabled = true
+                clearTextArea.disabled = true
+                helpButton.disabled = true
+                secondHelpButton.disabled = true
+                autoPause.disabled = true
+                setTimeout(function(){playButton.disabled = false;
+                restart.disabled = false; clearTextArea.disabled = false;           helpButton.disabled = false;secondHelpButton.disabled = false
+                autoPause.disabled = false;                     
+            },1)
+                play()
+            }
+        break;
     }
 }
 
